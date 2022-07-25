@@ -20,7 +20,6 @@ const Login = () => {
 
     const onSubmit = data => {
         console.log(data);
-        data.score = 0;
         MoviebusterApi.login(data);
         setIsLoggedIn(true)
         getUser(data)

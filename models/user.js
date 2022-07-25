@@ -104,29 +104,42 @@ class User {
     }
 
     static async update(username) {
-        const result = await db.query(
-            `SELECT username,
-                score
-           FROM users
-           WHERE username = $1`,
-            [username],
-        );
-
-        let user = result.rows[0];
-
-        if (user) {
-            const updateUser =
-            `UPDATE users
+        if (username) {
+            const user = await db.query(`UPDATE users
             SET score = score + 10
             WHERE username = $1
-            RETURNING username,
-            score`
-            await db.query(updateUser, [username])
+            RETURNING username, score`, [username])
+            return user
+        } else {
+            console.log("ERR")
         }
-        if (!user) throw new NotFoundError(`No user: ${username}`);
-
-        return user;
     }
+
+    // {
+    //     // Ensure user exists
+    //     const result = await db.query(
+    //         `SELECT username,
+    //             score
+    //        FROM users
+    //        WHERE username = $1`,
+    //         [username],
+    //     );
+
+    //     let user = result.rows[0];
+
+    //     if (user) {
+    //         const updateUser =
+    //         `UPDATE users
+    //         SET score = score + 10
+    //         WHERE username = $1
+    //         RETURNING username,
+    //         score`
+    //         await db.query(updateUser, [username])
+    //     }
+    //     if (!user) throw new NotFoundError(`No user: ${username}`);
+
+    //     return user;
+    // }
 
 }
 

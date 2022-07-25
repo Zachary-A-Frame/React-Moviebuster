@@ -37,7 +37,7 @@ const Game = () => {
                 <input type="number" autoComplete="section-guess section"{...register("guess", { required: true, minLength: 1, maxLength: 3 })} /><br />
                 {errors.guess?.type === 'maxLength' && <p style={{ color: "red" }}>Enter a valid Guess! 0-100</p>}
 
-                <input type="submit" onSubmit={onSubmit} />
+                <input type="submit" />
                 <br />
             </form>
         </div>

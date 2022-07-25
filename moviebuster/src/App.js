@@ -13,7 +13,7 @@ import './App.css';
 import Game from './Components/Game';
 import Signup from './Components/Signup'
 import Login from "./Components/Login"
-import Movie from "./Components/Movie"
+import Navbar from "./Components/Navbar"
 
 // Context
 import MovieContext from './MovieContext'
@@ -37,22 +37,22 @@ function App() {
 
   return (
     isLoggedIn ? (
+      <div>
+        <Navbar />
       <div className="App">
-        {console.log(currUser)}
         <h1>Welcome {currUser.username}! Score: {currUser.score}</h1>
         <Router>
-          {/* <Navbar /> */}
           <UserContext.Provider value={{ currUser, setCurrUser, setIsLoggedIn }}>
-            <MovieContext.Provider value={{ movie }}>
+            <MovieContext.Provider value={{ movie, setMovie }}>
               <Switch>
                 <Route exact path="/" element={<Game />} />
-                <Route path="/Movie" element={<Movie />} />
+                {/* <Route path="/Movie" element={<Movie />} /> */}
                 <Route path="*" element={<Navigate to="/" />} />
               </Switch>
             </MovieContext.Provider>
           </UserContext.Provider>
-
         </Router>
+        </div>
       </div>
     )
       : (

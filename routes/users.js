@@ -11,7 +11,6 @@ const userRegisterSchema = require("../schemas/userRegister.json");
 const userAuthSchema = require("../schemas/userAuth.json");
 const { createToken } = require("../helpers/tokens");
 
-
 const router = express.Router();
 
 router.get("/", async function (req, res, next) {
@@ -24,6 +23,7 @@ router.get("/", async function (req, res, next) {
 });
 
 router.get("/:username", async function (req, res, next) {
+    console.log("Hello from get route")
     try {
         const user = await User.get(req.params.username);
         return res.json({ user });
@@ -75,6 +75,7 @@ router.post("/token", async function (req, res, next) {
 });
 
 router.patch("/:username", async function (req, res, next) {
+    console.log("Request for patch confirmed")
     try {
     const user = await User.update(req.params.username)
         return res.json({ user })

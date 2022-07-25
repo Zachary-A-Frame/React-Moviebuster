@@ -1,0 +1,4 @@
+# The contents of this folder are here for posterity, not for use in the application.
+This folder exists for historical purpose; the original way we obtained our data was through scraping, cleaning, and utilizing a number of python libraries for testing / integrating our data into our application. These are remnants of how that original process took place, much of which is documented and much of which is not.
+## Why is this not the same method for obtaining data for the new app?
+Simply speaking, it was a matter of ease of access. It was simpler to export a new CSV (movies.csv) that already had all of the data we needed, then importing it into our psql db. We could have used the same DB, but as I may want to make changes in the future, this was the simplest method of doing so from my perspective. To be clear, there were other methods of reaching the same goal, but this one saved the most time for me.

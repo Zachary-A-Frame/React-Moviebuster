@@ -8,12 +8,13 @@ import {
 } from "react-router-dom";
 
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Components
 import Game from './Components/Game';
 import Signup from './Components/Signup'
 import Login from "./Components/Login"
-import Navbar from "./Components/Navbar"
+import Header from "./Components/Navbar"
 
 // Context
 import MovieContext from './MovieContext'
@@ -30,7 +31,7 @@ function App() {
       let randMovie = Math.floor(Math.random() * 650)
       let movie = await MoviebusterApi.getMovie(randMovie);
       setMovie(movie)
-      console.log(movie.movie)
+      // console.log(movie.movie)
     }
     getMovie()
   }, [])
@@ -38,21 +39,20 @@ function App() {
   return (
     isLoggedIn ? (
       <div>
-        <Navbar />
-      <div className="App">
-        <h1>Welcome {currUser.username}! Score: {currUser.score}</h1>
         <Router>
           <UserContext.Provider value={{ currUser, setCurrUser, setIsLoggedIn }}>
-            <MovieContext.Provider value={{ movie, setMovie }}>
-              <Switch>
-                <Route exact path="/" element={<Game />} />
-                {/* <Route path="/Movie" element={<Movie />} /> */}
-                <Route path="*" element={<Navigate to="/" />} />
-              </Switch>
-            </MovieContext.Provider>
+            <Header />
+            <div className="App">
+
+              <MovieContext.Provider value={{ movie, setMovie }}>
+                <Switch>
+                  <Route exact path="/" element={<Game />} />
+                  <Route path="*" element={<Navigate to="/" />} />
+                </Switch>
+              </MovieContext.Provider>
+            </div>
           </UserContext.Provider>
         </Router>
-        </div>
       </div>
     )
       : (

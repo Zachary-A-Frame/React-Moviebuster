@@ -28,6 +28,7 @@ const Login = () => {
 
     return (
         <div className="signup">
+            <h1>Login</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="username">Username</label><br />
                 <input autoComplete="section-username section"{...register("username", { required: true, minLength: 4, maxLength: 25 })} /><br />

@@ -1,0 +1,19 @@
+.poster {
+    margin-left: 15%;
+    float: left;
+}
+
+.details {
+    /* margin: auto; */
+    font-size: 32px;
+    margin: 25px;
+    padding: 10px;
+}
+
+.incorrect {
+    color: red;
+}
+
+.correct {
+    color: green;
+}

@@ -104,7 +104,7 @@ class User {
     }
 
     static async update(username) {
-        console.log(username)
+        // console.log(username)
         if (username) {
             const user = await db.query(`UPDATE users
             SET score = score + 10
